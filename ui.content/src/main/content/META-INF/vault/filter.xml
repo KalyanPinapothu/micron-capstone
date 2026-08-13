@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/content/dam" mode="merge"/>
+    <filter root="/var/dxml/folderprofiles/global-profile" mode="merge"/>
+    <filter root="/var/dxml/folderprofiles/global-profile/presets" mode="replace"/>
+    <filter root="/conf/micron" mode="merge"/>
+    <filter root="/content/experience-fragments/micron" mode="merge"/>
+    <filter root="/content/micron" mode="merge"/>
+    <filter root="/content/dam/micron" mode="merge"/>
+</workspaceFilter>

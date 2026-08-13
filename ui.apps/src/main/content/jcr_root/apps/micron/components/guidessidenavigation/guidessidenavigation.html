@@ -1,0 +1,31 @@
+<sly data-sly-use.nav="com.micron.core.models.GuidesSideNavigationModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-call="${templates.placeholder @ isEmpty=!nav.items}"></sly>
+
+<nav class="guides-side-nav" data-guides-side-nav data-sly-test="${nav.items}" aria-label="Topic navigation">
+    <div class="guides-side-nav__search">
+        <input class="guides-side-nav__search-input" data-guides-side-nav-search type="search" placeholder="Search by keyword" aria-label="Search by keyword">
+        <span class="guides-side-nav__search-icon" aria-hidden="true"></span>
+    </div>
+    <div class="guides-side-nav__tabs" aria-label="Navigation views">
+        <button class="guides-side-nav__tab guides-side-nav__tab--active" type="button">Content</button>
+        <button class="guides-side-nav__tab" type="button">Links</button>
+    </div>
+    <ol class="guides-side-nav__list guides-side-nav__list--root" data-sly-list.item="${nav.items}">
+        <sly data-sly-call="${itemTemplate @ item=item}"></sly>
+    </ol>
+</nav>
+
+<template data-sly-template.itemTemplate="${@ item}">
+    <li class="${item.active ? 'guides-side-nav__item guides-side-nav__item--active' : 'guides-side-nav__item'}" data-guides-side-nav-item>
+        <div class="guides-side-nav__row">
+            <a class="guides-side-nav__link" href="${item.href}">${item.title}</a>
+            <button data-sly-test="${item.children}" class="guides-side-nav__toggle" type="button" aria-expanded="${item.active ? 'true' : 'false'}" aria-label="Toggle ${item.title}">
+                <span aria-hidden="true">v</span>
+            </button>
+        </div>
+        <ol data-sly-test="${item.children}" class="guides-side-nav__list" data-sly-list.child="${item.children}" data-sly-attribute.hidden="${!item.active}">
+            <sly data-sly-call="${itemTemplate @ item=child}"></sly>
+        </ol>
+    </li>
+</template>

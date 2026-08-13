@@ -1,0 +1,12 @@
+<sly data-sly-use.image="com.micron.core.models.NormalizedImageModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div data-sly-test="${!image.empty}" class="cmp-image ${image.sourceClasses}">
+        <img
+            class="cmp-image__image"
+            src="${image.fileReference @ context='uri'}"
+            alt="${image.alt}"
+            title="${image.title}"
+            loading="lazy">
+    </div>
+    <sly data-sly-call="${templates.placeholder @ isEmpty=image.empty, classAppend='cmp-image'}"></sly>
+</sly>

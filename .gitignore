@@ -1,0 +1,25 @@
+# Maven build output
+target/
+
+# Node dependencies and bundled local runtime
+node_modules/
+ui.tests/test-module/node/
+
+# IDE and operating-system metadata
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db
+
+# Test and tooling output
+cypress/screenshots/
+cypress/videos/
+coverage/
+*.log
+
+# Local environment and credentials
+.env
+.env.*
+!.env.example
+

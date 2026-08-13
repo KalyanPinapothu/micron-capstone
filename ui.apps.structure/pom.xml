@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+             http://maven.apache.org/POM/4.0.0
+             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.micron</groupId>
+        <artifactId>micron</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>micron.ui.apps.structure</artifactId>
+    <packaging>content-package</packaging>
+
+    <name>Micron - Repository Structure Package</name>
+
+    <description>
+        Repository structure package defining immutable repository roots
+        used by the application's code packages.
+    </description>
+
+    <build>
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>filevault-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+
+                <configuration>
+
+                    <allowIndexDefinitions>true</allowIndexDefinitions>
+                    <noIntermediateSaves>true</noIntermediateSaves>
+
+                    <properties>
+                        <cloudManagerTarget>none</cloudManagerTarget>
+                    </properties>
+
+                    <group>com.micron</group>
+                    <name>micron.ui.apps.structure</name>
+                    <packageType>application</packageType>
+
+                   <filters>
+                        <!-- Parent roots required by ui.apps -->
+                        <filter>
+                            <root>/apps</root>
+                        </filter>
+
+                        <filter>
+                            <root>/oak:index</root>
+                        </filter>
+
+                        <!-- Project application root -->
+                        <filter>
+                            <root>/apps/micron</root>
+                        </filter>
+                        <!-- Retain these only when ui.apps contains corresponding overlays -->
+                        <filter>
+                            <root>/apps/sling</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/cq</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/dam</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/wcm</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/msm</root>
+                        </filter>
+                        <filter>
+                            <root>/apps/settings</root>
+                        </filter>
+                    </filters>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

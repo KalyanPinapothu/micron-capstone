@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:template="/conf/micron/settings/wcm/templates/topic-content"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="micron/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="core/wcm/components/container/v1/container"
+            id="topic-page"
+            layout="responsiveGrid">
+            <container1
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/container/v1/container"
+                id="topic-container">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="9"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="12"/>
+                </cq:responsive>
+                <map-reader
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="micron/components/guidesmapreader"
+                    navigationRootLevel="{Long}5"
+                    structureDepth="{Long}5"/>
+                <injected-container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="core/wcm/components/container/v1/container"
+                    id="injected-container">
+                    <topic-content
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="core/wcm/components/text/v2/text"
+                        text="$topic.content$"
+                        textIsRich="{Boolean}true"/>
+                </injected-container>
+            </container1>
+        </root>
+    </jcr:content>
+</jcr:root>

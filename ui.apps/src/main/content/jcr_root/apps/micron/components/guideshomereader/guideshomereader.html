@@ -1,0 +1,69 @@
+<sly data-sly-use.nav="com.micron.core.models.GuidesSideNavigationModel"></sly>
+
+<div id="topic-page"
+     class="guides-home-reader guides-layout"
+     data-guides-home-reader>
+    <aside id="table-of-contents" class="guides-home-reader__side-panel guides-layout__side-panel" aria-label="Table of contents">
+        <nav class="guides-side-nav" data-guides-side-nav aria-label="Topic navigation">
+            <div class="guides-side-nav__search">
+                <input class="guides-side-nav__search-input" data-guides-side-nav-search type="search" placeholder="Search by keyword" aria-label="Search by keyword">
+                <span class="guides-side-nav__search-icon" aria-hidden="true"></span>
+            </div>
+            <div class="guides-side-nav__tabs" aria-label="Navigation views">
+                <button class="guides-side-nav__tab guides-side-nav__tab--active" type="button" data-guides-side-nav-tab="content" aria-controls="guides-home-toc" aria-selected="true">Content</button>
+                <button class="guides-side-nav__tab" type="button" data-guides-side-nav-tab="links" aria-controls="guides-home-links" aria-selected="false">Links</button>
+            </div>
+            <ol id="guides-home-toc" class="guides-side-nav__list guides-side-nav__list--root" data-guides-home-toc data-guides-side-nav-panel="content">
+                <sly data-sly-list.item="${nav.items}">
+                    <sly data-sly-call="${itemTemplate @ item=item}"></sly>
+                </sly>
+                <li class="guides-side-nav__item" data-sly-test="${!nav.items}">
+                    <div class="guides-side-nav__row">
+                        <span class="guides-side-nav__link">Loading content...</span>
+                    </div>
+                </li>
+            </ol>
+            <div id="guides-home-links" class="guides-side-nav__links-panel" data-guides-home-links data-guides-side-nav-panel="links" hidden>
+                <p class="guides-side-nav__status">Loading links...</p>
+            </div>
+        </nav>
+    </aside>
+
+    <main id="topic-container" class="guides-home-reader__content guides-layout__content" tabindex="-1">
+        <div class="guides-layout__toolbar">
+            <button class="guides-layout__panel-toggle" type="button" aria-expanded="true">
+                <span aria-hidden="true">&lsaquo;</span>
+                <span>Hide Side Panel</span>
+            </button>
+            <div class="guides-document-actions" aria-label="Document actions">
+                <button class="guides-document-actions__button" type="button" data-guides-action="download" aria-label="Download" title="Download">
+                    <span aria-hidden="true">&#x21E9;</span>
+                </button>
+                <button class="guides-document-actions__button" type="button" data-guides-action="print" aria-label="Print" title="Print">
+                    <span aria-hidden="true">&#x2399;</span>
+                </button>
+                <button class="guides-document-actions__button" type="button" data-guides-action="notify" aria-label="Notify" title="Notify">
+                    <span aria-hidden="true">&#x1F514;</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="guides-map-reader" data-guides-client-reader>
+            <p class="guides-map-reader__status">Loading document...</p>
+        </div>
+    </main>
+</div>
+
+<template data-sly-template.itemTemplate="${@ item}">
+    <li class="${item.active ? 'guides-side-nav__item guides-side-nav__item--active' : 'guides-side-nav__item'}" data-guides-side-nav-item>
+        <div class="guides-side-nav__row">
+            <a class="guides-side-nav__link" href="#${item.anchorId}" data-guides-topic-url="${item.pageHref}" data-guides-reader-topic-link>${item.title}</a>
+            <button data-sly-test="${item.children}" class="guides-side-nav__toggle" type="button" aria-expanded="true" aria-label="Toggle ${item.title}">
+                <span aria-hidden="true">v</span>
+            </button>
+        </div>
+        <ol data-sly-test="${item.children}" class="guides-side-nav__list" data-sly-list.child="${item.children}">
+            <sly data-sly-call="${itemTemplate @ item=child}"></sly>
+        </ol>
+    </li>
+</template>

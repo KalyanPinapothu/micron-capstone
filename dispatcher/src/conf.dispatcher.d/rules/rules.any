@@ -1,0 +1,3 @@
+/0000 { /glob "*.pdf" /type "allow" }
+/0001 { /glob "*.html" /type "allow" }
+/0002 { /glob "/content/micron/*" /type "allow" }

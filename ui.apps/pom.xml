@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="
+             http://maven.apache.org/POM/4.0.0
+             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>com.micron</groupId>
+        <artifactId>micron</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>micron.ui.apps</artifactId>
+    <packaging>content-package</packaging>
+
+    <name>Micron - UI apps</name>
+    <description>UI apps package for Micron</description>
+
+    <build>
+        <sourceDirectory>src/main/content/jcr_root</sourceDirectory>
+
+        <plugins>
+
+            <plugin>
+                <groupId>org.apache.jackrabbit</groupId>
+                <artifactId>filevault-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+
+                <configuration>
+
+                    <allowIndexDefinitions>true</allowIndexDefinitions>
+                    <noIntermediateSaves>true</noIntermediateSaves>
+
+                    <properties>
+                        <cloudManagerTarget>none</cloudManagerTarget>
+                    </properties>
+
+                    <group>com.micron</group>
+                    <name>micron.ui.apps</name>
+                    <packageType>application</packageType>
+
+                    <repositoryStructurePackages>
+                        <repositoryStructurePackage>
+                            <groupId>com.micron</groupId>
+                            <artifactId>micron.ui.apps.structure</artifactId>
+                        </repositoryStructurePackage>
+                    </repositoryStructurePackages>
+
+                    <validatorsSettings>
+                        <jackrabbit-packagetype>
+                            <options>
+                                <immutableRootNodeNames>
+                                    apps,libs,oak:index
+                                </immutableRootNodeNames>
+                            </options>
+                        </jackrabbit-packagetype>
+                    </validatorsSettings>
+
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>com.day.jcr.vault</groupId>
+                <artifactId>content-package-maven-plugin</artifactId>
+                <extensions>true</extensions>
+
+                <configuration>
+                    <verbose>true</verbose>
+                    <failOnError>true</failOnError>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.sling</groupId>
+                <artifactId>htl-maven-plugin</artifactId>
+
+                <executions>
+                    <execution>
+                        <id>validate-htl-scripts</id>
+                        <goals>
+                            <goal>validate</goal>
+                        </goals>
+                        <phase>generate-sources</phase>
+
+                        <configuration>
+                            <generateJavaClasses>true</generateJavaClasses>
+                            <generatedJavaClassesPrefix>
+                                org.apache.sling.scripting.sightly
+                            </generatedJavaClassesPrefix>
+
+                            <sourceDirectory>
+                                ${project.build.sourceDirectory}
+                            </sourceDirectory>
+
+                            <allowedExpressionOptions>
+                                <allowedExpressionOption>
+                                    cssClassName
+                                </allowedExpressionOption>
+                                <allowedExpressionOption>
+                                    decoration
+                                </allowedExpressionOption>
+                                <allowedExpressionOption>
+                                    decorationTagName
+                                </allowedExpressionOption>
+                                <allowedExpressionOption>
+                                    wcmmode
+                                </allowedExpressionOption>
+                            </allowedExpressionOptions>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
+        </plugins>
+    </build>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>com.micron</groupId>
+            <artifactId>micron.core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.micron</groupId>
+            <artifactId>micron.ui.apps.structure</artifactId>
+            <version>${project.version}</version>
+            <type>zip</type>
+        </dependency>
+
+        <dependency>
+            <groupId>com.adobe.aem</groupId>
+            <artifactId>aem-sdk-api</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.sling</groupId>
+            <artifactId>org.apache.sling.scripting.sightly.runtime</artifactId>
+            <version>1.2.4-1.4.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+</project>

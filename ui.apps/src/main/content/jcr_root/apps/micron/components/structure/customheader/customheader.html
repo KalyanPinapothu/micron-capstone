@@ -1,0 +1,100 @@
+<sly data-sly-use.header="com.micron.core.models.MicronHeader"
+     data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly data-sly-call="${clientlib.css @ categories='micron.header'}" />
+
+<header class="micron-header" data-micron-header>
+    <a class="micron-header__skip" href="#main-content">Skip to content</a>
+
+    <div class="micron-header__utility">
+        <div class="micron-header__utility-inner">
+            <nav class="micron-header__utility-links" aria-label="Utility navigation">
+                <a data-sly-repeat.link="${header.utilityLinks}"
+                   href="${link.url}"
+                   target="${link.newTab ? '_blank' : '_self'}"
+                   rel="${link.newTab ? 'noopener noreferrer' : ''}">${link.label}</a>
+            </nav>
+            <div class="micron-header__account">
+                <button class="micron-header__region" type="button" data-region-toggle aria-expanded="false">
+                    <span class="micron-header__globe" aria-hidden="true"></span>
+                    <span>${header.regionLabel}</span>
+                    <span class="micron-header__angle" aria-hidden="true"></span>
+                </button>
+                <a class="micron-header__signin" href="${header.signInUrl}">${header.signInLabel}</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="micron-header__main">
+        <div class="micron-header__main-inner">
+            <a class="micron-header__brand" href="${header.homeUrl}" aria-label="${header.logoAlt} home">
+                <img data-sly-test="${header.logoPath}" src="${header.logoPath}" alt="${header.logoAlt}" />
+                <span data-sly-test="${!header.logoPath}" class="micron-header__brand-text">micron</span>
+            </a>
+
+            <nav class="micron-header__nav" aria-label="Primary navigation">
+                <div class="micron-header__nav-item" data-sly-repeat.menu="${header.mainNavigation}">
+                    <a data-sly-test="${!menu.hasMegaMenu}" class="micron-header__nav-link" href="${menu.url}">${menu.title}</a>
+                    <button data-sly-test="${menu.hasMegaMenu}"
+                            class="micron-header__nav-link micron-header__nav-trigger"
+                            type="button" aria-expanded="false">
+                        ${menu.title}<span aria-hidden="true" class="micron-header__chevron"></span>
+                    </button>
+                    <section data-sly-test="${menu.hasMegaMenu}" class="micron-header__mega" aria-label="${menu.title}">
+                        <div class="micron-header__mega-inner">
+                            <div class="micron-header__mega-heading">
+                                <a href="${menu.url}">${menu.title}</a>
+                            </div>
+                            <div class="micron-header__columns">
+                                <div class="micron-header__column" data-sly-repeat.column="${menu.columns}">
+                                    <a data-sly-test="${column.headingUrl}" class="micron-header__column-title" href="${column.headingUrl}">${column.heading}</a>
+                                    <h3 data-sly-test="${!column.headingUrl}" class="micron-header__column-title">${column.heading}</h3>
+                                    <ul>
+                                        <li data-sly-repeat.link="${column.links}">
+                                            <a href="${link.url}" target="${link.newTab ? '_blank' : '_self'}"
+                                               rel="${link.newTab ? 'noopener noreferrer' : ''}">${link.label}</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <a data-sly-test="${menu.featuredLabel}" class="micron-header__featured" href="${menu.featuredUrl}">${menu.featuredLabel}<span aria-hidden="true">→</span></a>
+                        </div>
+                    </section>
+                </div>
+            </nav>
+
+            <div class="micron-header__actions">
+                <button class="micron-header__search-button" type="button" data-search-toggle aria-label="Open search">
+                    <span class="micron-header__search-label">Search</span>
+                    <span class="micron-header__search-glyph" aria-hidden="true"></span>
+                </button>
+                <button class="micron-header__menu-button" type="button" data-menu-toggle aria-label="Open menu" aria-expanded="false">
+                    <span class="micron-header__menu-glyph" aria-hidden="true"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="micron-header__search" data-search-panel hidden>
+        <form action="${header.searchAction}" method="get" role="search">
+            <label class="sr-only" for="micron-header-search">${header.searchPlaceholder}</label>
+            <input id="micron-header-search" name="q" type="search" placeholder="${header.searchPlaceholder}" autocomplete="off" />
+            <button type="submit" aria-label="Submit search"><span class="micron-header__search-glyph" aria-hidden="true"></span></button>
+            <button type="button" data-search-close aria-label="Close search"><span class="micron-header__close-glyph" aria-hidden="true"></span></button>
+        </form>
+    </div>
+
+    <div class="micron-header__region-panel" data-region-panel hidden>
+        <div class="micron-header__region-inner">
+            <strong>Select a region</strong>
+            <a href="https://www.micron.com/">US - English</a>
+            <a href="https://www.micron.cn/">China - 简体中文</a>
+            <span aria-current="page">India - English</span>
+            <a href="https://jp.micron.com/">Japan - 日本語</a>
+            <a href="https://my.micron.com/">Malaysia - English</a>
+            <a href="https://sg.micron.com/">Singapore - English</a>
+            <a href="https://tw.micron.com/">Taiwan - 繁體中文</a>
+        </div>
+    </div>
+</header>
+
+<sly data-sly-call="${clientlib.js @ categories='micron.header'}" />

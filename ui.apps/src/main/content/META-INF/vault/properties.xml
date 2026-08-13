@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Vault Package Properties</comment>
+
+    <entry key="name">micron.ui.apps</entry>
+    <entry key="group">com.micron</entry>
+    <entry key="version">1.0.0-SNAPSHOT</entry>
+    <entry key="allowIndexDefinitions">true</entry>
+</properties>

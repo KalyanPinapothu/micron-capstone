@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workspaceFilter version="1.0">
+    <filter root="/apps/micron/clientlibs"/>
+    <filter root="/apps/micron/components"/>
+    <filter root="/apps/micron/i18n"/>
+    <filter root="/apps/sling" />
+	<filter root="/conf" mode="merge"/>
+	<filter root="/var" mode="merge"/>
+    <filter root="/oak:index/damAssetLucene-13-custom-1"/>
+</workspaceFilter>

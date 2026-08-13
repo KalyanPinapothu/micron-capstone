@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          jcr:primaryType="cq:Component"
+          jcr:title="Custom Footer"
+          jcr:description="Responsive, authorable footer component for the Micron site"
+          componentGroup="Micron - Structure"
+          sling:resourceSuperType="core/wcm/components/component/v1/component"/>

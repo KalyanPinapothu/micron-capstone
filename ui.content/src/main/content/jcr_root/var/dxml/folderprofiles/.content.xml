@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="sling:OrderedFolder"
+    globalDefaultConfigs="\[{&quot;type&quot;:&quot;XML_EDITOR_UI_CONFIG&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_CSS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_SNIPPETS&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_LABELS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;EXPERIENCE_FRAGMENT_MAPPING&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;NATIVE_AEMSITE_COMPONENT_MAPPING&quot;,&quot;path&quot;:&quot;/var/dxml/folderprofiles/XmlEditorConfigs/componentmapping.json&quot;},&#xa;            {&quot;type&quot;:&quot;JSON_EXTENSION_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;CSS_EXTENSION_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;XML_EDITOR_ROOT_MAP&quot;,&quot;rootMap&quot;:&quot;&quot;}]"
+    profileConfigs="\[{&quot;type&quot;:&quot;XML_EDITOR_UI_CONFIG&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_CSS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_SNIPPETS&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_LABELS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;EXPERIENCE_FRAGMENT_MAPPING&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;NATIVE_AEMSITE_COMPONENT_MAPPING&quot;,&quot;path&quot;:&quot;/var/dxml/folderprofiles/XmlEditorConfigs/componentmapping.json&quot;},{&quot;type&quot;:&quot;JSON_EXTENSION_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;CSS_EXTENSION_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},&#xa;            {&quot;type&quot;:&quot;XML_EDITOR_ROOT_MAP&quot;,&quot;rootMap&quot;:&quot;&quot;}]">
+    <config/>
+    <global-profile/>
+    <bf61eaa4-bd9d-4893-c57f-858eb8dfd3bb/>
+    <f4b764db-e517-b9c7-db69-90c54717b0d7/>
+    <c653d7b7-de44-60ce-8160-b7fbf8169afa/>
+    <_x0034_30fada2-be1b-1818-52ec-803735f8d935/>
+</jcr:root>

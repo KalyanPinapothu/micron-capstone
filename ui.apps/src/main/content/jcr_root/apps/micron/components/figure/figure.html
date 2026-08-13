@@ -1,0 +1,51 @@
+<sly
+    data-sly-use.figure="com.micron.core.models.FigureModel"
+    data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+
+    <figure
+        data-sly-test="${!figure.empty}"
+        id="${figure.sourceId}"
+        class="cmp-dita-figure
+               ${figure.sourceClasses}
+               cmp-dita-figure--${figure.placement}
+               ${figure.orientation}">
+
+        <figcaption
+            data-sly-test="${figure.captionHtml}"
+            class="cmp-dita-figure__caption">
+            ${figure.captionHtml @ context='html'}
+        </figcaption>
+
+        <div
+            data-sly-test="${figure.descriptionHtml}"
+            class="cmp-dita-figure__description">
+            ${figure.descriptionHtml @ context='html'}
+        </div>
+
+        <div
+            data-sly-test="${figure.noteHtmlList}"
+            class="cmp-dita-figure__notes">
+            <sly data-sly-list.noteHtml="${figure.noteHtmlList}">
+                <div class="cmp-dita-figure__note">
+                    ${noteHtml @ context='html'}
+                </div>
+            </sly>
+        </div>
+
+        <div
+            data-sly-test="${figure.imageResource}"
+            class="cmp-dita-figure__media">
+
+            <sly
+                data-sly-resource="${figure.imageResource @
+                    resourceType=figure.imageResourceType}">
+            </sly>
+        </div>
+    </figure>
+
+    <sly
+        data-sly-call="${templates.placeholder @
+            isEmpty=figure.empty,
+            classAppend='cmp-dita-figure'}">
+    </sly>
+</sly>

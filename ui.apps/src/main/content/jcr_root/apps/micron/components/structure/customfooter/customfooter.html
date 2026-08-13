@@ -1,0 +1,75 @@
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
+     data-sly-call="${clientlib.css @ categories='micron.footer'}"></sly>
+<sly data-sly-use.footer="com.micron.core.models.CustomFooterModel"></sly>
+
+<footer class="micron-footer" data-cmp-is="micron-footer" aria-label="Site footer">
+    <div class="micron-footer__main">
+        <div class="micron-footer__container">
+            <a class="micron-footer__brand"
+               href="${footer.logoLink}"
+               x-cq-linkchecker="valid"
+               aria-label="${footer.logoAlt} home">
+                <img class="micron-footer__logo"
+                     src="${footer.logoPath @ context='uri'}"
+                     alt="${footer.logoAlt}"/>
+            </a>
+
+            <nav class="micron-footer__nav" aria-label="Footer navigation">
+                <section class="micron-footer__section"
+                         data-sly-repeat.section="${footer.sections}">
+                    <button class="micron-footer__section-toggle"
+                            type="button"
+                            aria-expanded="false"
+                            aria-controls="footer-panel-${sectionList.index}">
+                        <span>${section.title}</span>
+                        <span class="micron-footer__chevron" aria-hidden="true"></span>
+                    </button>
+
+                    <div class="micron-footer__section-heading">
+                        <a href="${section.titleUrl}"
+                           x-cq-linkchecker="valid">${section.title}</a>
+                    </div>
+
+                    <ul class="micron-footer__links" id="footer-panel-${sectionList.index}">
+                        <li data-sly-repeat.link="${section.links}">
+                            <a href="${link.link}"
+                               target="${link.openInNewTab ? '_blank' : '_self'}"
+                               rel="${link.openInNewTab ? 'noopener noreferrer' : ''}"
+                               x-cq-linkchecker="valid">${link.label}</a>
+                        </li>
+                    </ul>
+                </section>
+            </nav>
+
+            <div class="micron-footer__contact">
+                <a href="${footer.ctaLink}" x-cq-linkchecker="valid">
+                    <span>${footer.contactLabel}</span>
+                    <span class="micron-footer__arrow" aria-hidden="true">→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="micron-footer__bottom">
+        <div class="micron-footer__container micron-footer__bottom-inner">
+            <ul class="micron-footer__legal">
+                <li data-sly-repeat.link="${footer.legalItems}">
+                    <a href="${link.link}"
+                       target="${link.openInNewTab ? '_blank' : '_self'}"
+                       rel="${link.openInNewTab ? 'noopener noreferrer' : ''}"
+                       x-cq-linkchecker="valid">${link.label}</a>
+                </li>
+                <sly data-sly-test="${footer.legalItems.empty}">
+                    <li><a href="https://in.micron.com/legal" x-cq-linkchecker="valid">Legal</a></li>
+                    <li><a href="https://in.micron.com/privacy" x-cq-linkchecker="valid">Privacy notice</a></li>
+                    <li><a href="https://in.micron.com/terms-of-sale" x-cq-linkchecker="valid">Terms of sale</a></li>
+                    <li><a href="https://in.micron.com/privacy-choices" x-cq-linkchecker="valid">Privacy choices</a></li>
+                </sly>
+            </ul>
+            <p class="micron-footer__copyright">${footer.copyrightText}</p>
+            <p class="micron-footer__disclaimer">${footer.disclaimerText}</p>
+        </div>
+    </div>
+</footer>
+
+<sly data-sly-call="${clientlib.js @ categories='micron.footer'}"></sly>

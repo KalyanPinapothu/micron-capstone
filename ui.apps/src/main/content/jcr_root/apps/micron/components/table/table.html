@@ -1,0 +1,25 @@
+<!-- <sly data-sly-test.hasContent="${properties.tableHtml}"></sly>
+<sly data-sly-test="${wcmmode.edit && !hasContent}">
+    <div class="cq-placeholder" data-emptytext="${component.title}"></div>
+</sly>
+<div data-sly-test="${hasContent}" class="micron-guides-table">
+    ${properties.tableHtml @ context='unsafe'}
+</div> -->
+<sly data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+
+    <div
+        data-sly-test="${properties.tableHtml}"
+        id="${properties.sourceId}"
+        class="cmp-dita-table ${properties.sourceClasses}">
+
+        <div class="cmp-dita-table__scroll-container">
+            ${properties.tableHtml @ context='html'}
+        </div>
+    </div>
+
+    <sly
+        data-sly-call="${templates.placeholder @
+            isEmpty=!properties.tableHtml,
+            classAppend='cmp-dita-table'}">
+    </sly>
+</sly>

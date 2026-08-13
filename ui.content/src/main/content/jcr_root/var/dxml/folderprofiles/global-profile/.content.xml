@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:guides="http://www.adobe.com/aem_guides/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    guides:isProfileUpgraded="{Boolean}true"
+    guides:isTemplateUpgraded="{Boolean}true"
+    jcr:primaryType="sling:OrderedFolder"
+    ai_max_suggestions="{Long}4"
+    ai_min_chars="{Long}40"
+    authoring_templates="\{&quot;topicTemplates&quot;:[&quot;glossary.dita&quot;,&quot;reference.dita&quot;,&quot;task.dita&quot;,&quot;ditaval.ditaval&quot;,&quot;blank.dita&quot;,&quot;concept.dita&quot;,&quot;markdown.md&quot;,&quot;topic.dita&quot;,&quot;troubleshooting.dita&quot;],&quot;mapTemplates&quot;:[&quot;subject-scheme.ditamap&quot;,&quot;map.ditamap&quot;,&quot;bookmap.ditamap&quot;]}"
+    conditionalprofiles="\[]"
+    globalDefaultConfigs="\[{&quot;type&quot;:&quot;XML_EDITOR_UI_CONFIG&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_CSS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_SNIPPETS&quot;,&quot;path&quot;:&quot;&quot;}, {&quot;type&quot;:&quot;XML_EDITOR_LABELS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;EXPERIENCE_FRAGMENT_MAPPING&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;NATIVE_AEMSITE_COMPONENT_MAPPING&quot;,&quot;path&quot;:&quot;/var/dxml/folderprofiles/global-profile/XmlEditorConfigs/componentmapping.json&quot;},{&quot;type&quot;:&quot;JSON_EXTENSION_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;CSS_EXTENSION_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;XML_EDITOR_ROOT_MAP&quot;,&quot;rootMap&quot;:&quot;&quot;}]"
+    id="global-profile"
+    name="Global Profile"
+    profileConfigs="\[{&quot;type&quot;:&quot;XML_EDITOR_UI_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;XML_EDITOR_CSS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;XML_EDITOR_SNIPPETS&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;XML_EDITOR_LABELS_CONFIG&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;EXPERIENCE_FRAGMENT_MAPPING&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;NATIVE_AEMSITE_COMPONENT_MAPPING&quot;,&quot;path&quot;:&quot;&quot;},{&quot;type&quot;:&quot;JSON_EXTENSION_CONFIG&quot;},{&quot;type&quot;:&quot;CSS_EXTENSION_CONFIG&quot;},{&quot;type&quot;:&quot;XML_EDITOR_ROOT_MAP&quot;,&quot;rootMap&quot;:&quot;&quot;}]"
+    publishing_templates="\{&quot;pdfTemplates&quot;:[],&quot;scormTemplates&quot;:[]}"
+    translation_config="\{&quot;propagateVersionLabel&quot;:false,&quot;disableProjectAfterCompletion&quot;:false,&quot;deleteProjectAfterCompletion&quot;:false}">
+    <presets/>
+    <XmlEditorConfigs/>
+    <presets.json/>
+</jcr:root>

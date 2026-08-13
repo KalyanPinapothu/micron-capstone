@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0" xmlns:nt="http://www.jcp.org/jcr/nt/1.0" xmlns:cq="http://www.day.com/jcr/cq/1.0" xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+    jcr:primaryType="cq:Page">
+    <jcr:content
+        cq:deviceGroups="[mobile/groups/responsive]"
+        cq:lastModified="{Date}2026-08-07T18:21:40.119+05:30"
+        cq:lastModifiedBy="admin"
+        cq:template="/conf/micron/settings/wcm/templates/topic-content"
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="micron/components/page">
+        <root
+            jcr:primaryType="nt:unstructured"
+            sling:resourceType="core/wcm/components/container/v1/container"
+            id="topic-page"
+            layout="responsiveGrid">
+            <experiencefragment-header
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/experiencefragment/v1/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/micron/us/en/site/header/master"/>
+            <container
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/container/v1/container"
+                id="table-of-contents">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="3"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="12"/>
+                </cq:responsive>
+                <container0
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="core/wcm/components/container/v1/container"
+                    id="table-of-contents-trigger"/>
+                <container23
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="micron/components/guidessidenavigation"
+                    navigationRootLevel="{Long}4"
+                    structureDepth="{Long}5"/>
+            </container>
+            <container1
+                cq:styleIds="[container--aemGrid]"
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/container/v1/container"
+                id="topic-container">
+                <cq:responsive jcr:primaryType="nt:unstructured">
+                    <default
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="9"/>
+                    <phone
+                        jcr:primaryType="nt:unstructured"
+                        offset="0"
+                        width="12"/>
+                </cq:responsive>
+                <title
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="core/wcm/components/title/v2/title"
+                    id="topic-title"/>
+                <container123
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="core/wcm/components/container/v1/container"
+                    id="page-details">
+                    <cq:responsive jcr:primaryType="nt:unstructured">
+                        <default
+                            jcr:primaryType="nt:unstructured"
+                            offset="0"
+                            width="2"/>
+                    </cq:responsive>
+                    <container12345
+                        cq:styleIds="[container--aemGrid]"
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="core/wcm/components/container/v1/container"
+                        id="lastUpdateBox">
+                        <text2
+                            jcr:primaryType="nt:unstructured"
+                            sling:resourceType="core/wcm/components/text/v2/text"
+                            id="lastUpdateLabel"
+                            text="Last update:"
+                            textIsRich="true"/>
+                    </container12345>
+                </container123>
+                <injected-container
+                    jcr:primaryType="nt:unstructured"
+                    sling:resourceType="core/wcm/components/container/v1/container"
+                    editable="{Boolean}true">
+                    <topic-content
+                        jcr:primaryType="nt:unstructured"
+                        sling:resourceType="core/wcm/components/text/v2/text"
+                        text="$topic.content$"
+                        textIsRich="true"/>
+                </injected-container>
+            </container1>
+            <experiencefragment-footer
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="core/wcm/components/experiencefragment/v1/experiencefragment"
+                fragmentVariationPath="/content/experience-fragments/micron/us/en/site/footer/master"/>
+        </root>
+        <cq:responsive jcr:primaryType="nt:unstructured">
+            <breakpoints jcr:primaryType="nt:unstructured">
+                <phone
+                    jcr:primaryType="nt:unstructured"
+                    title="Smaller Screen"
+                    width="{Long}768"/>
+            </breakpoints>
+        </cq:responsive>
+    </jcr:content>
+</jcr:root>

@@ -1,0 +1,154 @@
+[
+  {
+    "name": "figure",
+    "class": "fig",
+    "resourceType": "micron/components/figure",
+    "attributeMap": [
+      {
+        "from": "outerHTML",
+        "to": "figureHtml"
+      },
+      {
+        "attribute": "id",
+        "to": "sourceId"
+      },
+      {
+        "attribute": "class",
+        "to": "sourceClasses"
+      },
+      {
+        "attribute": "data-attr-outputclass",
+        "to": "outputClass"
+      }
+    ]
+  },
+  {
+    "name": "h1, h2, h3, h4, h5, h6",
+    "class": "title",
+    "resourceType": "micron/components/title",
+    "attributeMap": [
+      {
+        "from": "textContent",
+        "to": "text"
+      },
+      {
+        "from": "textContent",
+        "to": "jcr:title"
+      },
+      {
+        "from": "name",
+        "to": "type"
+      }
+    ]
+  },
+  {
+    "name": "figcaption",
+    "class": "title",
+    "resourceType": "micron/components/title",
+    "attributeMap": [
+      {
+        "from": "innerHTML",
+        "to": "text"
+      },
+      {
+        "from": "textContent",
+        "to": "jcr:title"
+      },
+      {
+        "value": "h3",
+        "to": "type"
+      }
+    ]
+  },
+  {
+    "name": "div",
+    "class": "note",
+    "resourceType": "micron/components/text",
+    "attributeMap": [
+      {
+        "from": "outerHTML",
+        "to": "text"
+      },
+      {
+        "value": true,
+        "to": "textIsRich"
+      }
+    ]
+  },
+  {
+    "name": "img",
+    "class": "image",
+    "resourceType": "micron/components/image",
+    "attributeMap": [
+      {
+        "attribute": "src",
+        "to": "fileReference"
+      },
+      {
+        "attribute": "alt",
+        "to": "alt"
+      },
+      {
+        "attribute": "id",
+        "to": "sourceId"
+      },
+      {
+        "attribute": "class",
+        "to": "sourceClasses"
+      },
+      {
+        "value": [
+          "fileReference"
+        ],
+        "to": "path-attributes"
+      }
+    ]
+  },
+  {
+    "name": "table",
+    "resourceType": "micron/components/table",
+    "attributeMap": [
+      {
+        "attribute": "id",
+        "to": "sourceId"
+      },
+      {
+        "attribute": "class",
+        "to": "sourceClasses"
+      },
+      {
+        "from": "outerHTML",
+        "to": "tableHtml"
+      }
+    ]
+  },
+  {
+    "name": "div",
+    "class": "p",
+    "resourceType": "micron/components/text",
+    "attributeMap": [
+      {
+        "from": "outerHTML",
+        "to": "text"
+      },
+      {
+        "value": true,
+        "to": "textIsRich"
+      }
+    ]
+  },
+  {
+    "name": "p, pre, ul, ol, dl, blockquote",
+    "resourceType": "micron/components/text",
+    "attributeMap": [
+      {
+        "from": "outerHTML",
+        "to": "text"
+      },
+      {
+        "value": true,
+        "to": "textIsRich"
+      }
+    ]
+  }
+]

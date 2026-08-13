@@ -1,0 +1,8 @@
+/0000 { /type "deny" /url "*" }
+/0001 { /type "deny" /url "/bin/dita/*" }
+/0002 { /type "deny" /url "/crx/*" }
+/0003 { /type "deny" /url "/system/console/*" }
+/0004 { /type "deny" /url "/etc/dita/profiles/*" }
+/0005 { /type "allow" /url "/content/micron/*" }
+/0006 { /type "allow" /url "/content/dam/micron/*.pdf" }
+/0007 { /type "allow" /url "/etc.clientlibs/*" }

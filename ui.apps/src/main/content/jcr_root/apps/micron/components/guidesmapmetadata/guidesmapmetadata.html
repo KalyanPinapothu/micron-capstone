@@ -1,0 +1,16 @@
+<sly data-sly-use.metadata="com.micron.core.models.GuidesMapMetadataModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-call="${templates.placeholder @ isEmpty=metadata.empty}"></sly>
+
+<section class="guides-map-metadata" data-sly-test="${!metadata.empty}" aria-label="Document summary">
+    <div class="guides-map-metadata__inner">
+        <p class="guides-map-metadata__category">${metadata.category}</p>
+        <h1 class="guides-map-metadata__title">${metadata.title}</h1>
+        <p class="guides-map-metadata__description">${metadata.description}</p>
+        <div class="guides-map-metadata__badges" aria-label="Document details">
+            <span class="guides-map-metadata__badge guides-map-metadata__badge--strong">${metadata.accessLabel}</span>
+            <span class="guides-map-metadata__badge">${metadata.versionLabel}</span>
+            <span class="guides-map-metadata__badge">${metadata.lastUpdatedLabel}</span>
+        </div>
+    </div>
+</section>

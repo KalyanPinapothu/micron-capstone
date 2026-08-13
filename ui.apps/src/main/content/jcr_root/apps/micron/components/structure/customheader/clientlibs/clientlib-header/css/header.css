@@ -1,0 +1,732 @@
+@font-face {
+    font-display: swap;
+    font-family: "MicronBasis";
+    font-style: normal;
+    font-weight: 400;
+    src: local("MicronBasis-Regular"),
+        url("https://in.micron.com/etc.clientlibs/micron/clientlibs/clientlib-site/resources/fonts/MicronBasisFonts/BasisFonts/MicronBasis-Regular.woff") format("woff");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "MicronBasis";
+    font-style: normal;
+    font-weight: 500;
+    src: local("MicronBasis-Medium"),
+        url("https://in.micron.com/etc.clientlibs/micron/clientlibs/clientlib-site/resources/fonts/MicronBasisFonts/BasisFonts/MicronBasis-Medium.woff") format("woff");
+}
+
+@font-face {
+    font-display: swap;
+    font-family: "MicronBasis";
+    font-style: normal;
+    font-weight: 700;
+    src: local("MicronBasis-Bold"),
+        url("https://in.micron.com/etc.clientlibs/micron/clientlibs/clientlib-site/resources/fonts/MicronBasisFonts/BasisFonts/MicronBasis-Bold.woff") format("woff");
+}
+
+:root {
+    --micron-header-font-family: "MicronBasis", Arial, Helvetica, sans-serif;
+    --micron-header-bg: #030303;
+    --micron-header-top: #262626;
+    --micron-header-panel: #070707;
+    --micron-header-text: #fff;
+    --micron-header-muted: #d7d7d7;
+    --micron-header-soft: #8f969d;
+    --micron-header-border: #555;
+    --micron-header-accent: #d100ff;
+    --micron-header-search: #f1f2f3;
+}
+
+.micron-header,
+.micron-header * {
+    box-sizing: border-box;
+}
+
+.micron-header {
+    background: var(--micron-header-bg);
+    color: var(--micron-header-text);
+    font-family: var(--micron-header-font-family);
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+}
+
+.micron-header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.micron-header button,
+.micron-header input {
+    font: inherit;
+}
+
+.micron-header__skip {
+    background: #fff;
+    border: 2px solid var(--micron-header-accent);
+    color: #111;
+    left: 24px;
+    padding: 10px 14px;
+    position: absolute;
+    top: -64px;
+    z-index: 20;
+}
+
+.micron-header__skip:focus {
+    top: 10px;
+}
+
+.micron-header__utility {
+    background: var(--micron-header-top);
+    color: #fff;
+    height: 40px;
+}
+
+.micron-header__utility-inner,
+.micron-header__main-inner,
+.micron-header__mega-inner,
+.micron-header__region-inner {
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 32px;
+    width: 100%;
+}
+
+.micron-header__utility-inner {
+    align-items: center;
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.micron-header__utility-links,
+.micron-header__account {
+    align-items: center;
+    display: flex;
+}
+
+.micron-header__utility-links a {
+    margin-right: 26px;
+    position: relative;
+}
+
+.micron-header__utility-links a:not(:last-child)::after {
+    background: var(--micron-header-accent);
+    content: "";
+    height: 14px;
+    position: absolute;
+    right: -14px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+}
+
+.micron-header__utility a,
+.micron-header__utility button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 700;
+    gap: 8px;
+    line-height: 1;
+    min-height: 40px;
+    padding: 0;
+}
+
+.micron-header__utility a:hover,
+.micron-header__utility button:hover,
+.micron-header__utility a:focus,
+.micron-header__utility button:focus {
+    color: var(--micron-header-accent);
+}
+
+.micron-header__region {
+    margin-right: 18px;
+    position: relative;
+}
+
+.micron-header__region::after {
+    background: var(--micron-header-accent);
+    content: "";
+    height: 14px;
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+}
+
+.micron-header__signin {
+    margin-left: 12px;
+}
+
+.micron-header__globe {
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    display: inline-block;
+    height: 20px;
+    position: relative;
+    width: 20px;
+}
+
+.micron-header__globe::before,
+.micron-header__globe::after {
+    content: "";
+    left: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.micron-header__globe::before {
+    border-left: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    border-radius: 50%;
+    height: 16px;
+    width: 8px;
+}
+
+.micron-header__globe::after {
+    border-top: 1.5px solid currentColor;
+    width: 16px;
+}
+
+.micron-header__angle {
+    border-bottom: 2px solid var(--micron-header-accent);
+    border-right: 2px solid var(--micron-header-accent);
+    display: inline-block;
+    height: 8px;
+    margin-left: -2px;
+    margin-top: -4px;
+    transform: rotate(45deg);
+    width: 8px;
+}
+
+.micron-header__main {
+    background: var(--micron-header-bg);
+    height: 90px;
+}
+
+.micron-header__main-inner {
+    align-items: center;
+    display: flex;
+    height: 100%;
+}
+
+.micron-header__brand {
+    align-items: center;
+    display: inline-flex;
+    flex: 0 0 auto;
+    margin-right: 66px;
+    min-height: 90px;
+}
+
+.micron-header__brand img {
+    display: block;
+    height: auto;
+    max-height: 42px;
+    object-fit: contain;
+    width: 142px;
+}
+
+.micron-header__brand-text {
+    color: #fff;
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: 0;
+    line-height: 1;
+}
+
+.micron-header__nav {
+    align-items: stretch;
+    display: flex;
+    flex: 1 1 auto;
+    height: 100%;
+}
+
+.micron-header__nav-item {
+    align-items: stretch;
+    display: flex;
+}
+
+.micron-header__nav-link {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 15px;
+    font-weight: 700;
+    gap: 8px;
+    letter-spacing: 0;
+    line-height: 1;
+    min-height: 90px;
+    padding: 0 18px;
+    position: relative;
+    white-space: nowrap;
+}
+
+.micron-header__nav-link::after {
+    background: var(--micron-header-accent);
+    bottom: 18px;
+    content: "";
+    height: 3px;
+    left: 18px;
+    opacity: 0;
+    position: absolute;
+    right: 18px;
+    transform: scaleX(0.5);
+    transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.micron-header__nav-item.is-open > .micron-header__nav-link,
+.micron-header__nav-link:hover,
+.micron-header__nav-link:focus {
+    color: var(--micron-header-accent);
+}
+
+.micron-header__nav-item.is-open > .micron-header__nav-link::after,
+.micron-header__nav-link:hover::after,
+.micron-header__nav-link:focus::after {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.micron-header__chevron {
+    border-bottom: 1.5px solid currentColor;
+    border-right: 1.5px solid currentColor;
+    height: 7px;
+    margin-top: -4px;
+    transform: rotate(45deg);
+    width: 7px;
+}
+
+.micron-header__actions {
+    align-items: center;
+    display: flex;
+    flex: 0 0 auto;
+    gap: 14px;
+    margin-left: 28px;
+}
+
+.micron-header__search-button {
+    align-items: center;
+    background: var(--micron-header-search);
+    border: 0;
+    border-radius: 999px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.32);
+    color: #6c747c;
+    cursor: pointer;
+    display: inline-flex;
+    font-size: 15px;
+    font-weight: 400;
+    height: 40px;
+    justify-content: space-between;
+    min-width: 200px;
+    padding: 0 18px 0 20px;
+}
+
+.micron-header__search-button:hover,
+.micron-header__search-button:focus {
+    color: #32383e;
+}
+
+.micron-header__search-glyph {
+    border: 2px solid var(--micron-header-accent);
+    border-radius: 50%;
+    display: inline-block;
+    height: 15px;
+    position: relative;
+    width: 15px;
+}
+
+.micron-header__search-glyph::after {
+    background: var(--micron-header-accent);
+    border-radius: 1px;
+    content: "";
+    height: 8px;
+    position: absolute;
+    right: -5px;
+    top: 10px;
+    transform: rotate(45deg);
+    width: 2px;
+}
+
+.micron-header__menu-button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+    height: 44px;
+    justify-content: center;
+    width: 44px;
+}
+
+.micron-header__menu-glyph,
+.micron-header__menu-glyph::before,
+.micron-header__menu-glyph::after {
+    background: currentColor;
+    border-radius: 1px;
+    content: "";
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 22px;
+}
+
+.micron-header__menu-glyph::before {
+    position: absolute;
+    top: -7px;
+}
+
+.micron-header__menu-glyph::after {
+    position: absolute;
+    top: 7px;
+}
+
+.micron-header__close-glyph {
+    display: inline-block;
+    height: 22px;
+    position: relative;
+    width: 22px;
+}
+
+.micron-header__close-glyph::before,
+.micron-header__close-glyph::after {
+    background: currentColor;
+    content: "";
+    height: 2px;
+    left: 2px;
+    position: absolute;
+    top: 10px;
+    width: 18px;
+}
+
+.micron-header__close-glyph::before {
+    transform: rotate(45deg);
+}
+
+.micron-header__close-glyph::after {
+    transform: rotate(-45deg);
+}
+
+.micron-header__mega {
+    background: var(--micron-header-panel);
+    display: none;
+    left: 0;
+    min-height: 590px;
+    position: absolute;
+    right: 0;
+    top: 130px;
+}
+
+.micron-header__nav-item.is-open .micron-header__mega {
+    display: block;
+}
+
+.micron-header__mega-inner {
+    padding-bottom: 58px;
+    padding-top: 28px;
+}
+
+.micron-header__mega-heading {
+    margin-bottom: 20px;
+}
+
+.micron-header__mega-heading > a {
+    color: #fff;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.micron-header__columns {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.micron-header__column {
+    min-height: 100%;
+    padding-right: 28px;
+}
+
+.micron-header__column:nth-child(3) {
+    border-right: 1px solid var(--micron-header-border);
+}
+
+.micron-header__column-title {
+    color: #fff;
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.35;
+    margin: 0 0 15px;
+}
+
+.micron-header__column a.micron-header__column-title:hover,
+.micron-header__column li a:hover,
+.micron-header__featured:hover {
+    color: var(--micron-header-accent);
+}
+
+.micron-header__column ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.micron-header__column li + li {
+    margin-top: 15px;
+}
+
+.micron-header__column li a {
+    color: #fff;
+    display: inline-block;
+    font-size: 15px;
+    line-height: 1.35;
+}
+
+.micron-header__featured {
+    border-top: 1px solid var(--micron-header-border);
+    color: var(--micron-header-accent);
+    display: inline-flex;
+    font-size: 14px;
+    font-weight: 700;
+    gap: 10px;
+    letter-spacing: 1.5px;
+    margin-top: 32px;
+    padding-top: 18px;
+    text-transform: uppercase;
+}
+
+.micron-header__search {
+    background: var(--micron-header-bg);
+    border-top: 1px solid #232323;
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
+    height: 90px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    z-index: 9;
+}
+
+.micron-header__search form {
+    align-items: center;
+    display: flex;
+    gap: 18px;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1080px;
+    padding: 0 32px;
+}
+
+.micron-header__search input {
+    background: transparent;
+    border: 0;
+    border-bottom: 1px solid #777;
+    color: #fff;
+    flex: 1 1 auto;
+    font-size: 22px;
+    font-weight: 400;
+    height: 48px;
+    min-width: 0;
+    outline: 0;
+    padding: 8px 0;
+}
+
+.micron-header__search input:focus {
+    border-bottom-color: var(--micron-header-accent);
+}
+
+.micron-header__search button {
+    align-items: center;
+    background: transparent;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    display: inline-flex;
+    height: 44px;
+    justify-content: center;
+    padding: 0;
+    width: 44px;
+}
+
+.micron-header__region-panel {
+    background: #161616;
+    box-shadow: 0 14px 24px rgba(0, 0, 0, 0.28);
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    z-index: 10;
+}
+
+.micron-header__region-inner {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    min-height: 82px;
+    padding-bottom: 22px;
+    padding-top: 22px;
+}
+
+.micron-header__region-inner strong {
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    margin-right: 8px;
+}
+
+.micron-header__region-inner a,
+.micron-header__region-inner span {
+    color: var(--micron-header-muted);
+    font-size: 14px;
+}
+
+.micron-header__region-inner a:hover,
+.micron-header__region-inner span[aria-current="page"] {
+    color: var(--micron-header-accent);
+}
+
+.sr-only {
+    clip: rect(0, 0, 0, 0) !important;
+    height: 1px !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    width: 1px !important;
+}
+
+@media (max-width: 1180px) {
+    .micron-header__utility-links {
+        display: none;
+    }
+
+    .micron-header__main {
+        height: 68px;
+    }
+
+    .micron-header__main-inner,
+    .micron-header__utility-inner,
+    .micron-header__region-inner {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .micron-header__brand {
+        margin-right: auto;
+        min-height: 68px;
+    }
+
+    .micron-header__brand img {
+        max-height: 32px;
+        width: 132px;
+    }
+
+    .micron-header__search-button {
+        min-width: 44px;
+        padding: 0;
+        width: 44px;
+    }
+
+    .micron-header__search-label {
+        clip: rect(0, 0, 0, 0) !important;
+        height: 1px !important;
+        overflow: hidden !important;
+        position: absolute !important;
+        width: 1px !important;
+    }
+
+    .micron-header__menu-button {
+        display: inline-flex;
+    }
+
+    .micron-header__nav {
+        background: var(--micron-header-panel);
+        border-top: 1px solid #232323;
+        display: none;
+        flex-direction: column;
+        height: auto;
+        left: 0;
+        max-height: calc(100vh - 108px);
+        overflow: auto;
+        position: absolute;
+        right: 0;
+        top: 108px;
+    }
+
+    .micron-header.is-mobile-open .micron-header__nav {
+        display: flex;
+    }
+
+    .micron-header__nav-item {
+        border-top: 1px solid #232323;
+        display: block;
+    }
+
+    .micron-header__nav-link {
+        justify-content: space-between;
+        min-height: 58px;
+        padding: 0 24px;
+        width: 100%;
+    }
+
+    .micron-header__nav-link::after {
+        bottom: 0;
+        left: 24px;
+        right: 24px;
+    }
+
+    .micron-header__mega {
+        min-height: 0;
+        position: static;
+    }
+
+    .micron-header__mega-inner {
+        padding: 0 24px 24px;
+    }
+
+    .micron-header__mega-heading {
+        display: none;
+    }
+
+    .micron-header__columns {
+        gap: 22px;
+        grid-template-columns: 1fr;
+    }
+
+    .micron-header__column,
+    .micron-header__column:nth-child(3) {
+        border-right: 0;
+        padding-right: 0;
+    }
+
+    .micron-header__search {
+        height: 68px;
+    }
+
+    .micron-header__search form {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .micron-header__search input {
+        font-size: 18px;
+    }
+
+    .micron-header__region-inner {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+    }
+}

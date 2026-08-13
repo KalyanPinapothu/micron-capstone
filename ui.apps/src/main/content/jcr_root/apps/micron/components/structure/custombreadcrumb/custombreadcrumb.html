@@ -1,0 +1,10 @@
+<sly data-sly-use.breadcrumb="com.micron.core.models.CustomBreadcrumbModel"></sly>
+
+<nav class="cmp-custom-breadcrumb" data-sly-test="${!breadcrumb.empty}" aria-label="Breadcrumb">
+    <ol class="cmp-custom-breadcrumb__list" data-sly-list.item="${breadcrumb.items}">
+        <li class="cmp-custom-breadcrumb__item">
+            <a data-sly-test="${!item.current}" class="cmp-custom-breadcrumb__link" href="${item.href}">${item.title}</a>
+            <span data-sly-test="${item.current}" class="cmp-custom-breadcrumb__current" aria-current="page">${item.title}</span>
+        </li>
+    </ol>
+</nav>

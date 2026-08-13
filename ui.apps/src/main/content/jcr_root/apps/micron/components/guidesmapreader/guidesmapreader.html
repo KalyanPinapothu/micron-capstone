@@ -1,0 +1,12 @@
+<sly data-sly-use.reader="com.micron.core.models.GuidesMapReaderModel"
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html"
+     data-sly-call="${templates.placeholder @ isEmpty=reader.empty}"></sly>
+
+<div class="guides-map-reader" data-guides-map-reader data-sly-test="${!reader.empty}">
+    <section class="guides-map-reader__section" id="${section.anchorId}" data-sly-repeat.section="${reader.sections}">
+        <h2 class="guides-map-reader__title">${section.title}</h2>
+        <div class="guides-map-reader__body" data-sly-repeat.contentResource="${section.contentResources}">
+            <sly data-sly-resource="${contentResource.path @ wcmmode='disabled'}"></sly>
+        </div>
+    </section>
+</div>

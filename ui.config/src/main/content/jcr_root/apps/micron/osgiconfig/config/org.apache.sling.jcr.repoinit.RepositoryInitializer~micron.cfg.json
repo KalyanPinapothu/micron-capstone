@@ -1,0 +1,9 @@
+{
+  "scripts": [
+    "create path (sling:Folder) /content/dam/micron",
+    "create path (nt:unstructured) /content/dam/micron/jcr:content",
+    "create path (sling:Folder) /conf/micron",
+    "create path (sling:OrderedFolder) /content/experience-fragments/micron",
+    "set properties on /content/dam/micron/jcr:content\n  set cq:conf{String} to /conf/micron\n  set jcr:title{String} to \"Micron\"\nend"
+  ]
+}

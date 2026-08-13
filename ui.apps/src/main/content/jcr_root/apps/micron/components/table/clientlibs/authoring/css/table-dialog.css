@@ -1,0 +1,7 @@
+.micron-table-html-field textarea,
+textarea.micron-table-html-field {
+    box-sizing: border-box;
+    min-height: 30rem;
+    height: calc(100vh - 15rem);
+    resize: vertical;
+}

@@ -1,0 +1,13 @@
+{
+  "scripts": [
+    "create path (sling:Folder) /conf/micron",
+    "create path (sling:OrderedFolder) /content/experience-fragments/micron",
+    
+    "create service user micron-dita-service with forced path system/micron",
+    "set principal ACL for micron-dita-service\n  allow jcr:read on /content/dam/micron\nend",
+    "set principal ACL for micron-dita-service\n allow rep:write on /content/dam/micron/retail-banking\nend",
+    "set principal ACL for micron-dita-service\n allow jcr:read on /conf/micron\nend",
+    "set principal ACL for micron-dita-service\n allow jcr:read on /var\nend",
+    "set principal ACL for micron-dita-service\n allow jcr:read on /etc\nend"
+  ]
+}
