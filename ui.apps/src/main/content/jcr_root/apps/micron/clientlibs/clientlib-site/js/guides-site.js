@@ -305,6 +305,9 @@
                 return response.json();
             })
             .then(function (data) {
+                return loadPageTree(data);
+            })
+            .then(function (data) {
                 var items = pageChildren(data, pagePath);
                 list.innerHTML = "";
 
@@ -324,6 +327,40 @@
             .catch(function () {
                 list.innerHTML = "<li class=\"guides-side-nav__item\"><div class=\"guides-side-nav__row\"><span class=\"guides-side-nav__link\">Unable to load content</span></div></li>";
             });
+    }
+
+    function loadPageTree(data) {
+        if (!Array.isArray(data)) {
+            return data;
+        }
+
+        var treeUrl = deepestPageTreeUrl(data);
+        if (!treeUrl) {
+            return {};
+        }
+
+        return fetch(treeUrl, { credentials: "same-origin" })
+            .then(function (response) {
+                if (!response.ok) {
+                    throw new Error("Unable to load page tree");
+                }
+                return response.json();
+            });
+    }
+
+    function deepestPageTreeUrl(urls) {
+        return urls.reduce(function (selectedUrl, url) {
+            if (typeof url !== "string") {
+                return selectedUrl;
+            }
+
+            var selector = url.match(/\.(\d+)\.json(?:[?#]|$)/i);
+            var selectedSelector = selectedUrl && selectedUrl.match(/\.(\d+)\.json(?:[?#]|$)/i);
+            if (selector && (!selectedSelector || parseInt(selector[1], 10) > parseInt(selectedSelector[1], 10))) {
+                return url;
+            }
+            return selectedUrl;
+        }, "");
     }
 
     function pageChildren(node, parentPath) {
@@ -593,7 +630,7 @@
             return;
         }
 
-        var grouped = groupReaderLinks(links || []);
+        var grouped = groupReaderLinks(nav, links || []);
         var total = grouped.external.length + grouped.internal.length;
 
         linksPanel.innerHTML = "";
@@ -609,7 +646,7 @@
         linksPanel.appendChild(list);
     }
 
-    function groupReaderLinks(links) {
+    function groupReaderLinks(nav, links) {
         var grouped = {
             internal: [],
             external: []
@@ -629,15 +666,45 @@
             }
             seen[key] = true;
 
+            var external = isExternalUrl(href);
             var item = {
-                title: label,
+                title: external ? label : topicTitleForReference(nav, link.topicReference) || label,
                 href: href,
-                external: isExternalUrl(href)
+                external: external
             };
             grouped[item.external ? "external" : "internal"].push(item);
         });
 
         return grouped;
+    }
+
+    function topicTitleForReference(nav, reference) {
+        var topicName = topicNameFromReference(reference);
+        if (!topicName) {
+            return "";
+        }
+
+        var topicLinks = nav.querySelectorAll("[data-guides-topic-url]");
+        for (var index = 0; index < topicLinks.length; index++) {
+            if (topicNameFromUrl(topicLinks[index].dataset.guidesTopicUrl) === topicName) {
+                return topicLinks[index].textContent.trim();
+            }
+        }
+        return "";
+    }
+
+    function topicNameFromReference(reference) {
+        if (!reference) {
+            return "";
+        }
+
+        var topicPath = reference.replace(/^.*#/, "").split("/")[0];
+        return topicPath.toLowerCase();
+    }
+
+    function topicNameFromUrl(url) {
+        var path = url.replace(/[?#].*$/, "").replace(/\.html$/i, "");
+        return path.substring(path.lastIndexOf("/") + 1).toLowerCase();
     }
 
     function collectReaderLinks(source, baseUrl) {
@@ -653,13 +720,15 @@
                 element.getAttribute("data-link") ||
                 element.getAttribute("xlink:href");
             var label = linkLabel(element);
+            var topicReference = element.getAttribute("data-attr-href") || href;
             if (!href || !label || isIgnoredCollectedLink(href)) {
                 return;
             }
 
             links.push({
                 title: label,
-                href: absolutizeImportedUrl(href, baseUrl)
+                href: absolutizeImportedUrl(href, baseUrl),
+                topicReference: topicReference
             });
         });
 
