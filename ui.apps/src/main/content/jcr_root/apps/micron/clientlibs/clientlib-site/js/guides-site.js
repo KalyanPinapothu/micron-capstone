@@ -668,7 +668,7 @@
 
             var external = isExternalUrl(href);
             var item = {
-                title: external ? label : topicTitleForReference(nav, link.topicReference) || label,
+                title: external ? label : topicTitleForReference(nav, link.topicReference, href) || fallbackLinkLabel(link),
                 href: href,
                 external: external
             };
@@ -678,15 +678,14 @@
         return grouped;
     }
 
-    function topicTitleForReference(nav, reference) {
-        var topicName = topicNameFromReference(reference);
-        if (!topicName) {
-            return "";
-        }
-
+    function topicTitleForReference(nav, reference, href) {
         var topicLinks = nav.querySelectorAll("[data-guides-topic-url]");
+        var topicName = topicNameFromUrl(href);
+        var referenceTopicName = topicNameFromReference(reference);
+
         for (var index = 0; index < topicLinks.length; index++) {
-            if (topicNameFromUrl(topicLinks[index].dataset.guidesTopicUrl) === topicName) {
+            var navigationTopicName = topicNameFromUrl(topicLinks[index].dataset.guidesTopicUrl);
+            if (navigationTopicName === topicName || navigationTopicName === referenceTopicName) {
                 return topicLinks[index].textContent.trim();
             }
         }
@@ -705,6 +704,41 @@
     function topicNameFromUrl(url) {
         var path = url.replace(/[?#].*$/, "").replace(/\.html$/i, "");
         return path.substring(path.lastIndexOf("/") + 1).toLowerCase();
+    }
+
+    function fallbackLinkLabel(link) {
+        var references = [link.topicReference, link.href];
+
+        for (var index = 0; index < references.length; index++) {
+            var reference = references[index];
+            if (!reference) {
+                continue;
+            }
+
+            var fragment = decodeReference(reference.split("#").pop());
+            var label = fragment
+                .replace(/^GUID-[0-9A-F-]+(?:-[a-z]{2})?\.dita$/i, "")
+                .replace(/\.[a-z]{2,5}$/i, "")
+                .replace(/^GUID-[0-9A-F-]+(?:-[a-z]{2})?\.dita/i, "")
+                .replace(/[-_]+/g, " ")
+                .replace(/([a-z])(\d)/gi, "$1 $2")
+                .replace(/\s+/g, " ")
+                .trim();
+
+            if (label && !/^GUID(?:[- ]|$)/i.test(label)) {
+                return label.charAt(0).toUpperCase() + label.slice(1);
+            }
+        }
+
+        return "Internal link";
+    }
+
+    function decodeReference(reference) {
+        try {
+            return decodeURIComponent(reference);
+        } catch (error) {
+            return reference;
+        }
     }
 
     function collectReaderLinks(source, baseUrl) {
@@ -736,9 +770,9 @@
     }
 
     function linkLabel(element) {
-        return (element.textContent ||
-            element.getAttribute("aria-label") ||
+        return (element.getAttribute("aria-label") ||
             element.getAttribute("title") ||
+            element.textContent ||
             element.getAttribute("href") ||
             "").trim();
     }
